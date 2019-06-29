@@ -30,8 +30,8 @@ module.exports = {
             }
             res.render('edit-item.ejs', {
                 title: "Edit Item Entry"
-                ,player: result[0]
-                ,message: ''
+                ,item: result[0]
+                ,message: '',
             });
         });
     },
@@ -41,7 +41,7 @@ module.exports = {
         let item_qty = req.body.item_qty;
         let item_amt = req.body.item_amt;
 
-        let query = "UPDATE `items` SET `name` = '" + item_name + "', `qty` = '" + item_qty + "', `item_amt` = '" + amount + "' WHERE `players`.`id` = '" + itemID + "'";
+        let query = "UPDATE `items` SET `name` = '" + item_name + "', `qty` = '" + item_qty + "', `amount` = '" + item_amt + "' WHERE `items`.`id` = '" + itemID + "'";
         db.query(query, (err, result) => {
             if (err) {
                 return res.status(500).send(err);

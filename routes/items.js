@@ -29,7 +29,7 @@ module.exports = {
                 return res.status(500).send(err);
             }
             res.render('edit-item.ejs', {
-                title: "Edit  Item Entry"
+                title: "Edit Item Entry"
                 ,player: result[0]
                 ,message: ''
             });
@@ -52,17 +52,11 @@ module.exports = {
     deleteItem: (req, res) => {
         let itemID = req.params.id;
         let deleteUserQuery = 'DELETE FROM items WHERE id = "' + itemID + '"';
-                if (err) {
-                    return res.status(500).send(err);
-                }
-                else{
-                    db.query(deleteUserQuery, (err, result) => {
-                        if (err) {
-                            return res.status(500).send(err);
-                        }
-                        res.redirect('/');
-                    });
-                }
-                
+                db.query(deleteUserQuery, (err, result) => {
+                    if (err) {
+                        return res.status(500).send(err);
+                    }
+                    res.redirect('/');
+                });
     }
 };

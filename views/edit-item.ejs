@@ -1,0 +1,31 @@
+<% include partials/header.ejs %>
+<div class="container">
+    <% if (message) { %>
+        <p class="text-center text-danger"><%= message %></p>
+    <% } %>
+
+    <% if (player) { %>
+        <form class="add-item-form" action="" method="post" enctype="multipart/form-data">
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="item-name">Item Name</label>
+                    <input type="text" class="form-control" name="item_name" id="item-name" value="<%= item.item_name %>" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="item-qty">Quantity</label>
+                    <input type="text" class="form-control" name="item_qty" id="item-qty" value="<%= item.item_qty %>" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="item-amt">Amount</label>
+                    <input type="text" class="form-control" name="item_amt" id="item-amt" value="<%= item.item_amt %>" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success float-right">Update Item</button>
+        </form>
+    <% } else { %>
+        <p class="text-center">Item Not Found. Go <a href="/add">here</a> to add item entry.</p>
+    <% } %>
+</div>
+</div>
+</body>
+</html>
